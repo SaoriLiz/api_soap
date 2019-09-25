@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html;" charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="lib/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="css/bootstrap-table.css">
+        <title>Saldos por cuenta</title>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+</head>
+<body style="background: linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,1));">
+<span class="container-fluid">
+     <div class="row container-fluid">
+       <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="panel panel-success hide" id="estatus3">
+                <div class="panel-heading" style="text-align: center">
+                  <strong>Estatus</strong>
+                </div>
+                <div class="panel-body">
+                  <label>Se ha cargado la información.</label>
+                  <button type="button" id="id_data3" class="btn btn-primary hide">Descargar cuentas</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="panel panel-primary" id="panel_principal_3">
+                <div class="panel-heading" style="text-align: center">
+                  Gestiones <i class='fa fa-list-alt' aria-hidden='true'></i>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-11 col-md-offset-1">
+                      <form  class="form-inline">
+                              <div class="form-inline">
+                                  <span class="btn btn-file">
+                                      <i class="fa fa-folder-open" aria-hidden="true"></i> Archivo 
+                                      <input type="file" id="archivo3" name="archivo3" required class="btn form-control" accept=".csv"/>
+                                  </span>
+                                  <button class="btn btn-primary" type="button" id="cargar3">Cargar <i class="fa fa-share" aria-hidden="true"></i></button>
+                              </div>
+                          </form>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div id="mensaje3" class="pre-scrollable hide" style="font-size:10px;background-color: black;color:white;height: 400px;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel-footer">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <!--<div class="panel panel-danger hide" id="errores3">
+                <div class="panel-heading" style="text-align: center">
+                  <strong>Errores</strong> 
+                </div>
+                <div class="panel-body">
+                  <label>Los siguientes registros no se han cargado, favor de revisarlos:</label>
+                    <div class='table-responsive fixed-table-body tabla-primary-purple'>
+                        <table class='table add_css_td modal_error3' id="id_error3"  data-height='270' data-unique-id='id_error3' data-height='400'  data-show-refresh='true' data-show-columns='true' data-search='true'  data-show-export='true' data-pagination='true' data-sort-order='asc' data-sortable='true' data-show-fullscreen='true' detailFilter='true' data-striped='true' data-export-options="{fileName:'custom_file_name'}">
+                              <thead class="text-primary" style='display:table-header-group;margin-right: 0px;'>
+                                <tr>
+                                  <th class='col-md-1' data-field='arg_codseg' data-align='left' data-sortable='true'>arg_codseg</th>
+                                  <th class='col-md-2' data-field='arg_pobcta' data-align='left' data-sortable='true'>arg_pobcta</th>
+                                  <th class='col-md-1' data-field='arg_gpocta' data-align='left' data-sortable='true'>arg_gpocta</th>
+                                  <th class='col-md-1' data-field='arg_folcta' data-align='left' data-sortable='true'>arg_folcta</th>
+                                  <th class='col-md-1' data-field='arg_subcta' data-align='left' data-sortable='true'>arg_subcta</th>
+                                  <th class='col-md-1' data-field='error' data-align='left' data-sortable='true'>Error</th>
+                                </tr>
+                              </thead>
+                              <tbody style='display: table-row-group;font-size: 10px;'>
+                              </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel-botton">
+                </div>
+              </div>-->
+              <div class="panel panel-danger hide" id="panel_errores3">
+                <div class="panel-heading" style="text-align: center">
+                  <strong>Errores</strong> 
+                </div>
+                <div class="panel-body">
+                  <label>Los siguientes registros no se han cargado, favor de revisarlos:</label>
+                    <div class='table-responsive fixed-table-body tabla-primary-purple'>
+                      <button type="button" id="errores3" class="btn btn-danger">Descargar cuentas no cargadas</button>
+                    </div>
+                </div>
+                <div class="panel-botton">
+                </div>
+              </div>
+            </div>
+          </div>
+           <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <!--<div class='table-responsive fixed-table-body tabla-primary-purple'>
+                  <table class='table add_css_td modal_detalle3 hide' id="id_data3"  data-unique-id='id_data3' data-height='400'  data-show-refresh='true' data-show-columns='true' data-search='true'  data-show-export='true' data-pagination='true' data-sort-order='asc' data-sortable='true' data-show-fullscreen='true' detailFilter='true' data-striped='true' data-tableexport-display="always" data-export-options="{fileName:'custom_file_name'}">
+                        <thead class="text-primary" style='display:table-header-group;margin-right: 0px;'>
+                          <tr>
+                            <th class='col-md-1' data-field='CUENTA_CORRIENTE' data-align='left' data-sortable='true'>Cuenta corriente</th>
+                            <th class='col-md-2' data-field='ADEUDO_VENCIDO' data-align='left' data-sortable='true'>Adeudo vencido</th>
+                            <th class='col-md-1' data-field='RECARGO_ADEUDO_VENCIDO' data-align='left' data-sortable='true'>Recargo adeudo vencido</th>
+                            <th class='col-md-1' data-field='REZAGO' data-align='left' data-sortable='true'>Rezago</th>
+                            <th class='col-md-1' data-field='RECARGO_REZAGO' data-align='left' data-sortable='true'>Recargo rezago</th>
+                            <th class='col-md-1' data-field='OBRA_Y_DERECHOS' data-align='left' data-sortable='true'>Obra y derechos</th>
+                            <th class='col-md-1' data-field='CONVENIOS' data-align='left' data-sortable='true'>Convenios</th>
+                            <th class='col-md-1' data-field='RECARGO_CONVENIOS' data-align='left' data-sortable='true'>Recargo convenios</th>
+                            <th class='col-md-1' data-field='OTROS_SERVICIOS' data-align='left' data-sortable='true'>Otros servicios</th>
+                            <th class='col-md-1' data-field='RECARGO_OTROS_SERVICIOS' data-align='left' data-sortable='true'>Rezago</th>
+                          </tr>
+                        </thead>
+                        <tbody style='display: table-row-group;font-size: 10px;'>
+                        </tbody>
+                  </table>
+              </div>-->
+            </div>
+          </div>
+       </div>
+    </div>
+</span>
+   <script src="js/jquery-3.2.1.min.js"></script>
+   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+   <script src="lib/PapaParse-4.6.0/PapaParse-4.6.0/papaparse.min.js"></script>
+   <script src="js/bootstrap-table.js"></script>
+   <script src="js/jquery.base64.js"></script>
+   <script src="js/saldosxcuenta.js"></script>
+   <script src="js/bootstrap-table-export.js"></script>
+   <script src="lib/tableExport.jquery.plugin-master/libs/FileSaver/FileSaver.min.js"></script>
+   <script src="lib/tableExport.jquery.plugin-master/tableExport.js"></script>
+   <!--
+   <script src="js/tableExport.js"></script>
+   <script src="lib/tableExport.jquery.plugin-master/libs/js-xlsx/xlsx.core.min.js"></script>-->
+   <!--<script src="lib/TableExport-3.3.13/dist/js/tableexport.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html;" charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="lib/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="css/bootstrap-table.css">
+        <title>Saldos por grupo</title>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+     <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-table.js"></script>
+    <script src="js/jquery.base64.js"></script>
+    <script src="js/bootstrap-table-export.js"></script>
+    <!--<script src="js/tableExport.js"></script>-->
+    <script src="js/bootstrap-table-export.js"></script>
+    <script src="lib/tableExport.jquery.plugin-master/libs/FileSaver/FileSaver.min.js"></script>
+    <script src="lib/tableExport.jquery.plugin-master/tableExport.js"></script>
+    <script src="js/saldosxgrupo.js"></script>
+</head>
+<body style="background: linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,1));">
+<span class="container-fluid">
+     <div class="row container-fluid">
+       <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="panel panel-success hide" id="estatus_2">
+                <div class="panel-heading" style="text-align: center">
+                  <strong>Estatus</strong>
+                </div>
+                <div class="panel-body">
+                  <label>Se ha cargado la información.</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="panel panel-primary" id="panel_principal_2">
+                <div class="panel-heading" style="text-align: center">
+                  Gestiones<i class='fa fa-list-alt' aria-hidden='true'></i>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-11 col-md-offset-1">
+                      <form  class="" id="form_saldosxgrupo">
+                          <div class="row">
+                            <div  class="col-md-12 col-md-offset-1 form-group">
+                              <i class="fa fa-key" aria-hidden="true"></i>Clave de seguridad:</i> 
+                              <input type=" " name="clave" required>
+                            </div>
+                          </div> 
+                          <div  class="row" >
+                            <div  class="col-md-12 col-md-offset-1 form-group">
+                              <i class="fa fa-object-group" aria-hidden="true"></i>Grupo de la cuenta:</i>
+                              <input type=" " name="cuenta" required id="cuenta" maxlength="5"> 
+                            </div>
+                           </div>  
+                          <div class="row">
+                            <div  class="col-md-12 col-md-offset-4 form-group">
+                              <button class="btn btn-primary" type="submit">Consultar <i class="fa fa-share" aria-hidden="true"></i></button>
+                            </div>
+                          </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div id="mensaje" class="pre-scrollable hide" style="font-size:10px;background-color: black;color:white;height: 400px;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel-footer">
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <div class='table-responsive fixed-table-body tabla-primary-purple'>
+                  <table class='table add_css_td modal_detalle hide' id="id_data"  data-unique-id='id_data' data-height='400'  data-show-refresh='true' data-show-columns='true' data-search='true'  data-show-export='true' data-pagination='true' data-sort-order='asc' data-sortable='true' data-show-fullscreen='true' detailFilter='true' data-striped='true' data-export-options="{fileName:'custom_file_name'}">
+                        <thead class="text-primary" style='display:table-header-group;margin-right: 0px;'>
+                          <tr>
+                            <th class='col-md-2' data-field='POB' data-align='left' data-sortable='true'>Pob</th>
+                            <th class='col-md-1' data-field='GPO' data-align='left' data-sortable='true'>Gpo</th>
+                            <th class='col-md-1' data-field='FOL' data-align='left' data-sortable='true'>Fol</th>
+                            <th class='col-md-1' data-field='SUB' data-align='left' data-sortable='true'>Sub</th>
+                            <th class='col-md-1' data-field='CUENTA_CORRIENTE' data-align='left' data-sortable='true'>Cuenta corriente</th>
+                            <th class='col-md-1' data-field='ADEUDO_VENCIDO' data-align='left' data-sortable='true'>Adeudo vencido</th>
+                            <th class='col-md-1' data-field='RECARGO_ADEUDO_VENCIDO' data-align='left' data-sortable='true'>Recargo adeudo vencido</th>
+                            <th class='col-md-1' data-field='REZAGO' data-align='left' data-sortable='true'>Rezago</th>
+                            <th class='col-md-1' data-field='RECARGO_REZAGO' data-align='left' data-sortable='true'>Recargo rezago</th>
+                            <th class='col-md-1' data-field='OBRA_Y_DERECHOS' data-align='left' data-sortable='true'>Obra y derechos</th>
+                            <th class='col-md-1' data-field='CONVENIOS' data-align='left' data-sortable='true'>Convenios</th>
+                            <th class='col-md-1' data-field='RECARGOS_CONVENIOS' data-align='left' data-sortable='true'>Recargo convenios</th>
+                            <th class='col-md-1' data-field='OTROS_SERVICIOS' data-align='left' data-sortable='true'>Otros servicios</th>
+                            <th class='col-md-1' data-field='RECARGO_OTROS_SERVICIOS' data-align='left' data-sortable='true'>Recargo otros servicios</th>
+                            <th class='col-md-1' data-field='MENSAJE' data-align='left' data-sortable='true'>Mensaje</th>
+                          </tr>
+                        </thead>
+                        <tbody style='display: table-row-group;font-size: 10px;'>
+                        </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+       </div>
+    </div>
+</span>
+</body>
+   
+</html>

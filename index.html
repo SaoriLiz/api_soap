@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html;" charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="lib/font-awesome/css/font-awesome.min.css">
+      <link rel="icon" href="https://www.google.com.mx/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwj4svLvhtfeAhVB0KwKHUkNC2EQjRx6BAgBEAU&url=http%3A%2F%2Fwww.iconarchive.com%2Ftag%2Freport&psig=AOvVaw28xF5Jd04xUuDfKHb5AI0T&ust=1542393816221832" type="image/ico">
+      <link rel="stylesheet" type="text/css" href="css/simple-sidebar.css">
+      <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+        <title>CESPM Web Services</title>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap-table.js"></script>
+    <script src="js/bootstrap-table-export.js"></script>
+    <script src="lib/tableExport.jquery.plugin-master/libs/FileSaver/FileSaver.min.js"></script>
+    <script src="lib/tableExport.jquery.plugin-master/tableExport.js"></script>
+    <script>
+      console.log("CARGADO1...");
+    </script>
+    <style type="text/css" media="screen">
+      .header_frame{
+        background-color: #6B9FCB; /*lightsteelblue, lightblue*/
+      }
+
+      .header_font{
+          font-family: Georgia, serif;
+          font-size: 27px;
+          letter-spacing: 0.2px;
+          word-spacing: 1.8px;
+          color: #fff;
+          font-weight: 520;
+          text-decoration: none solid rgb(68, 68, 68);
+          font-style: normal;
+          font-variant: normal;
+          text-transform: none;
+          padding-left: 10px;
+      }
+
+       .header_principal{
+          font-family: Georgia, serif;
+          font-size: 27px;
+          letter-spacing: 0.2px;
+          word-spacing: 1.8px;
+          /*color: ##428bca;*/
+          font-weight: 520;
+          text-decoration: none solid rgb(68, 68, 68);
+          font-style: normal;
+          font-variant: normal;
+          text-transform: none;
+          padding-left: 10px;
+      }
+
+    </style>
+</head>
+<body style="background: linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,1));">
+  <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#index">
+                        <i class='fa fa-list-alt' aria-hidden='true'></i> CESPM 
+                    </a>
+                </li>
+                <li>
+                    <a href="#gestiones"><i class="fa fa-circle" aria-hidden="true"></i> Gestiones</a>
+                </li>
+                <li>
+                    <a href="#saldosxgrupo" ><i class="fa fa-circle" aria-hidden="true"></i> Saldos Por Grupo</a>
+                </li>
+                <li>
+                    <a href="#saldosxcuenta"><i class="fa fa-circle" aria-hidden="true"></i> Saldos Por Cuenta</a>
+                </li>
+            </ul>
+        </div>
+
+        <section id="index" style="height: 1000px;background-color: #CCE2E9">
+          <div id="page-content-wrapper">
+              <div class="container-fluid">
+                <div style="padding-top:10px;">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="header_principal"><i class='fa fa-list-alt' aria-hidden='true'></i> CESPM</h3>
+                    </div>
+                    <div class="panel-body">
+                      <a href="#menu-toggle" class="btn btn-secondary menu-toggle" ><i class="fa fa-bars" aria-hidden="true"></i>Menu</a>
+                    </div>
+                    <div class="panel-bottom">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </section>
+
+        <section id="gestiones" style="height: 1000px;">
+          <div id="page-content-wrapper">
+              <div class="">
+                  <div class="header_frame container-fluid">
+                    <h2 class="header_font"><a href="#menu-toggle" class="btn btn-secondary menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i>Menu</a> Gestiones</h2>
+                  </div>
+                  <div id="div_gestiones"></div>
+              </div>
+          </div>
+        </section>
+
+        <section id="saldosxgrupo" style="height: 1000px;">
+          <div id="page-content-wrapper">
+              <div class="">
+                  <div class="header_frame container-fluid">
+                    <h2 class="header_font"><a href="#menu-toggle" class="btn btn-secondary menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i>Menu</a> Saldos Por Grupo</h2>
+                  </div>
+                  <div id="div_saldosxgrupo"></div>
+              </div>
+          </div>
+        </section>
+
+        <section id="saldosxcuenta" style="height: 1000px;">
+          <div id="page-content-wrapper">
+              <div class="">
+                  <div class="header_frame container-fluid">
+                    <h2 class="header_font"><a href="#menu-toggle" class="btn btn-secondary menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i>Menu</a> Saldos Por Cuenta</h2>
+                  </div>
+                  <div id="div_saldosxcuenta"></div>
+              </div>
+          </div>
+        </section>
+
+  </div>
+   <script>
+    $(document).ready(function(){
+      $("#wrapper").toggleClass("toggled");
+      $(".menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+      });
+      $("#div_gestiones").load("gestiones.html");
+      $("#div_saldosxcuenta").load("saldosxcuenta.html");
+      $("#div_saldosxgrupo").load("saldosxgrupo.html");
+    });
+    </script>
+
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.4.0/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.4.0/bootstrap-table.min.js"></script>-->
+</body>
+</html>
